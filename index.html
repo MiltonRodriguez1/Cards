@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Milton Josue Rodriguez Valdez</title>
+</head>
+<body onload="myfunction(1)">
+
+<style>
+	/*Google Fonts*/
+	@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap');
+
+	html,body{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		width: 100%;
+		height: 100%;
+		letter-spacing: 0.06em;
+		line-height: 1.6;
+		font-family: 'Titillium Web', sans-serif;
+		background: #E7E7E7;
+		opacity: 0.9;
+
+	}
+	/*Cards Title Design*/
+	.title{
+		text-align: center;
+		font-size: 130%;
+		color: #11171D;
+		margin-top: 0px;
+		margin-right: 0px;
+		font-weight: 110;
+		font-weight: bold 5px;
+	}
+	/*Cards Conteiner Design*/
+	.container{
+
+		width: 100%;
+		display: grid;/*Order on Columns and Rows*/
+ 		 grid-gap: 4rem;
+ 		 grid-template-columns: 300px 300px 300px 300px;
+ 		 grid-template-rows: 350px 350px;
+ 		 position: relative;
+ 		 left: 3%;
+ 		 margin-top: 50px;
+
+	}
+	/*Cards Design*/
+	.card{
+		width: 300px;
+		height: 370px;
+		border-radius: 8px;
+		box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+		overflow: hidden;
+		margin:20px;
+		text-align: center;
+		transition: all 0.25s;
+		margin-bottom: 10px;
+		background-color: #D5D5D5;
+		opacity: 0.8;
+		border-color: #11171D;
+    	-webkit-box-shadow: 37px 22px 29px 10px rgba(0,0,0,0.75);/*Shadow on the cards*/
+  		-moz-box-shadow: 27px 12px 19px 10px rgba(0,0,0,0.75);
+  		box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.75);
+	}
+	/*Visual Effect*/
+	.container .card:hover{
+		transform: translateY(-15px) translateX(-15px);
+		transition-duration: 1s;
+		box-shadow: 0 12px 16px rgba(0,0,0,0.2);
+		background-color: #BBBBBB;
+
+	}
+	.conteiner .card img{
+		width: 200px;
+		height: 200px;
+		left: 25%;
+		margin-top: 10px;
+	}
+	.container .card h4{
+		font-weight: 600;
+		
+	}
+	.container .card p{
+		
+		font-size: 20px;
+		font-weight: 300
+
+	}
+	.header{
+		width: 100%;
+		height: 50px;
+		background-color: #11171D;
+		position: fixed;
+		z-index: 100;
+		top: 0;
+
+	}
+	#logo{
+		width: 100px;
+		height: 50px;
+		position: relative;
+		left: 45%;
+
+	}
+	#logo:hover{
+		transform: translateY(-15px) translateX(-15px);
+		width: 130px;
+		height: 80px;
+		transition-duration: 1s;
+	}
+	.button{
+		text-decoration: none;
+    	padding: 10px;
+    	font-weight: 600;
+    	font-size: 20px;
+    	color: #D5D5D5;
+    	background-color: #11171D;
+    	border-radius: 6px;
+    	border: 2px solid #D5D5D5;
+    	-webkit-box-shadow: 37px 22px 29px 10px rgba(0,0,0,0.75);
+  		-moz-box-shadow: 27px 12px 19px 10px rgba(0,0,0,0.75);
+  		box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.75);
+  		font-family: 'Titillium Web', sans-serif;
+  		cursor: pointer;
+	}
+	.buttonContainer{
+		margin-top: 30px;
+  		justify-content: center;
+  		display: grid;/*Order on Columns and Rows*/
+ 		grid-gap: 4rem;
+ 		grid-template-columns: 200px 200px;
+	}
+	.button:hover{
+		transform: translateY(-10px) translateX(-10px);
+		transition-duration: 1s;
+		background-color: #283645;
+	}
+	.footer {
+		font-family:inder;
+ 	    font-size:15px;
+  		margin-top: 50px;
+  		width: 100%;
+  		padding: 40px;
+  		background-color: #11171D;
+  		color: #D5D5D5;
+	}
+	
+	/*Responsive Design*/
+	@media screen and (max-width: 1380px) {
+  	.container{
+ 		 grid-gap: 7.5rem;
+ 		 grid-template-columns: 300px 300px 300px;
+
+		
+	}
+  }
+  @media screen and (max-width: 1180px) {
+  	.container{
+ 		 grid-gap: 5rem;
+ 		 grid-template-columns: 300px 300px 300px;
+
+		
+	}
+  }
+  @media screen and (max-width: 980px) {
+  	.container{
+  		left: 10%;
+ 		 grid-gap: 10rem;
+ 		 grid-template-columns: 300px 300px;
+
+		
+	}
+	
+  }
+  @media screen and (max-width: 780px) {
+  	.container{
+ 		 grid-gap: 2rem;
+	}
+  }
+  @media screen and (max-width: 580px) {
+  	.container{
+ 		 grid-gap: 2rem;
+ 		 grid-template-columns: 300px ;
+ 		 
+	}
+  }
+	
+</style>
+<script >
+	var size = 0;//# Cards on the container
+	//Add o quit Cards. Option 1 add 10 cards and Option 2 or others, It remove 10 cards
+	function myfunction(option){
+	fetch('https://jsonplaceholder.typicode.com/photos')
+   .then(response => response.json())
+   .then(json =>  {
+
+   	//Find the numbers of desired Items of albumId =3
+   	let obj = [];//Array for save Cards
+   	var count = 0;//Count Cards
+   	for (var i =  0; i < Object.keys(json).length; i++) { 
+		if (json[i].albumId == 3) {
+			if (count < size) {
+				let newCard = obj.push(json[i]);
+				count++;
+			}
+		}
+	}
+	//locks the button when there are no more items
+	if (count>=(size-10)) {
+		document.getElementById("btnViewMore").disabled = false;
+   }else{
+   		document.getElementById("btnViewMore").disabled = true;
+   }
+ 
+ //Order By alphabetical
+	for (var i =  0; i < Object.keys(obj).length; i++) { 
+		if (i > 0) {
+			var ArrayPosition =0; //Variable for Control Array Position
+			while(ArrayPosition < Object.keys(obj).length){//loop to order by alphabetical
+				if (obj[i].title< obj[ArrayPosition].title) {//Compare Frist loop Title with current loop Title
+					var temp; // Temporal Variable to save them element to change 
+					temp = obj[i];
+					obj[i] = obj[ArrayPosition]; //Change Array Position
+					obj[ArrayPosition] = temp;
+				}
+				ArrayPosition = ArrayPosition+1;
+			}
+    	}
+	}
+
+ 	var cards = ''; //Create Variable of name cards for save Html text
+	for (var i =  0; i < Object.keys(obj).length; i++) {
+	//Create Card and save on the Html Text
+		cards = cards+ '<div class="card" style="width: 300px;height: 370px;">'+
+			'<a href="'+obj[i].url+'" target="_blank"><img src="'+obj[i].thumbnailUrl+'" ></a>'+
+			'<h4 class="title">'+obj[i].title+'</h4>'+
+			'<p>Id: '+obj[i].id+'</p>'+
+			'<p>Album Id:  '+obj[i].albumId+'</p>'+
+			'</div>';
+	}
+	document.getElementById("container").innerHTML = cards;//add cards to container
+	
+   });
+   //Add o quit Cards. Option 1 add 10 cards and Option 2 or others, It remove 10 cards
+   if (option==1) {size = size+10;}else{if (size>=20) {size = size-10}}
+   //If There are only 10 cards put btnViewLess on disabled
+   if (size<= 10) {
+		document.getElementById("btnViewLess").disabled = true;
+   }else{
+   		document.getElementById("btnViewLess").disabled = false;
+   }
+   }
+</script>
+
+<div class="header"><img src="https://3lhowb48prep40031529g5yj-wpengine.netdna-ssl.com/wp-content/uploads/2020/10/Modus-Logo-Primary-White.svg"  id="logo" > </div>
+<div class="container" id="container">	
+</div>
+<div class="buttonContainer">
+	<input type="button" name="loadMore" id="btnViewMore" class="button" value="+(10)" onclick="myfunction(1)">
+	<input type="button" name="loadLess" id="btnViewLess" class="button" value="-(10)" onclick="myfunction(2)">
+</div>
+<div class="footer">
+  <p class="pFooter">© 2021 Milton Josue Rodriguez Valdez</p>
+  <p class="pFooter"> Guatemala City</p>
+</div>
+
+</body>
+</html>
